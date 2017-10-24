@@ -13,7 +13,7 @@ DEPENDS += "lzop-native bc-native"
 SRCBRANCH = "nutsboard_nxp_4.9.11_1.0.0_ga-wip"
 KERNEL_SRC ?= "git://github.com/nutsboard/linux-imx.git;protocol=git"
 SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
-SRCREV = "bcd63064bd8d495d43e32fbfcf7f9947816c4fb2"
+SRCREV = "7fdf2e63b6218da9ea7ec831964f609beabf26bf"
 
 DEFAULT_PREFERENCE = "1"
 
