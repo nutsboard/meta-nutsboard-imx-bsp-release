@@ -136,10 +136,10 @@ if [ -z "$MACHINE" ]; then
 fi
 
 # copy new EULA into community so setup uses latest i.MX EULA
-cp sources/meta-fsl-bsp-release/imx/EULA.txt sources/meta-freescale/EULA
+cp sources/meta-nutsboard-imx-bsp-release/imx/EULA.txt sources/meta-freescale/EULA
 
 # Delete upstream machine and bbclass files that we have modified
-machine_roots="sources/meta-fsl-bsp-release/imx/meta-bsp/conf/machine"
+machine_roots="sources/meta-nutsboard-imx-bsp-release/imx/meta-bsp/conf/machine"
 for machine_root in $machine_roots; do
    if [ -d $machine_root ]; then
       machines="$machines $machine_root/*"
@@ -162,7 +162,7 @@ for machine_include in $machine_includes; do
       fi
    fi
 done
-bbclass_roots="sources/meta-fsl-bsp-release/imx/meta-bsp/classes"
+bbclass_roots="sources/meta-nutsboard-imx-bsp-release/imx/meta-bsp/classes"
 for bbclass_root in $bbclass_roots; do
    if [ -d $bbclass_root ]; then
       bbclasses="$bbclasses $bbclass_root/*"
@@ -209,10 +209,10 @@ else
 fi
 
 
-META_FSL_BSP_RELEASE="${CWD}/sources/meta-fsl-bsp-release/imx/meta-bsp"
+META_FSL_BSP_RELEASE="${CWD}/sources/meta-nutsboard-imx-bsp-release/imx/meta-bsp"
 echo "##Freescale Yocto Project Release layer" >> $BUILD_DIR/conf/bblayers.conf
-echo "BBLAYERS += \" \${BSPDIR}/sources/meta-fsl-bsp-release/imx/meta-bsp \"" >> $BUILD_DIR/conf/bblayers.conf
-echo "BBLAYERS += \" \${BSPDIR}/sources/meta-fsl-bsp-release/imx/meta-sdk \"" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \" \${BSPDIR}/sources/meta-nutsboard-imx-bsp-release/imx/meta-bsp \"" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \" \${BSPDIR}/sources/meta-nutsboard-imx-bsp-release/imx/meta-sdk \"" >> $BUILD_DIR/conf/bblayers.conf
 
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-browser \"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-openembedded/meta-gnome \"" >> $BUILD_DIR/conf/bblayers.conf
@@ -224,6 +224,10 @@ echo "BBLAYERS += \" \${BSPDIR}/sources/meta-qt5 \"" >> $BUILD_DIR/conf/bblayers
 
 echo BSPDIR=$BSPDIR
 echo BUILD_DIR=$BUILD_DIR
+
+# Generate uEnv.txt for u-boot
+UENV_PATH="../sources/meta-nutsboard-imx-bsp-release/imx/meta-bsp/recipes-bsp/u-boot/u-boot-uenv"
+echo UENV_PATH=$UENV_PATH
 
 # Support integrating community meta-freescale instead of meta-fsl-arm
 if [ -d ../sources/meta-freescale ]; then
