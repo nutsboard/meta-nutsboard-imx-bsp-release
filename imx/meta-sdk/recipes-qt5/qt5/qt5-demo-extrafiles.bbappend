@@ -2,8 +2,6 @@
 do_install () {
     install -d ${D}/${datadir}/pixmaps
     install -d ${D}/${datadir}/applications
-    install -m 0644 ${WORKDIR}/hellowindow.png ${D}/${datadir}/pixmaps
-    install -m 0644 ${WORKDIR}/hellowindow.desktop ${D}/${datadir}/applications
 }
 
 # Install other qt5 demos on SoC with GPU
@@ -26,8 +24,6 @@ do_install_append_imxgpu2d () {
     install -m 0644 ${WORKDIR}/qtledcombo.desktop ${D}/${datadir}/applications
     install -m 0644 ${WORKDIR}/qtsmarthome.png ${D}/${datadir}/pixmaps
     install -m 0644 ${WORKDIR}/qtsmarthome.desktop ${D}/${datadir}/applications
-    install -m 0644 ${WORKDIR}/quitbattery.png ${D}/${datadir}/pixmaps
-    install -m 0644 ${WORKDIR}/quitbattery.desktop ${D}/${datadir}/applications
     install -m 0644 ${WORKDIR}/quitindicators.png ${D}/${datadir}/pixmaps
     install -m 0644 ${WORKDIR}/quitindicators.desktop ${D}/${datadir}/applications
 }

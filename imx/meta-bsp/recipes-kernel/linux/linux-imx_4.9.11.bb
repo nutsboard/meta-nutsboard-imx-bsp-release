@@ -1,21 +1,19 @@
-# Copyright (C) 2013-2016 Freescale Semiconductor
-# Copyright 2017 NXP
+# Copyright 2017 NutsBoard.Org
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 SUMMARY = "Linux Kernel provided and supported by NXP"
 DESCRIPTION = "Linux Kernel provided and supported by NXP with focus on \
-i.MX Family Reference Boards. It includes support for many IPs such as GPU, VPU and IPU."
+NutsBoard Pistachio SBC. It includes support for many IPs such as GPU, VPU and IPU."
 
 require recipes-kernel/linux/linux-imx.inc
 require recipes-kernel/linux/linux-dtb.inc
 
 DEPENDS += "lzop-native bc-native"
 
-SRCBRANCH = "imx_4.9.11_1.0.0_ga"
-LOCALVERSION = "-1.0.0"
-KERNEL_SRC ?= "git://git.freescale.com/imx/linux-imx.git;protocol=git"
+SRCBRANCH = "nutsboard_nxp_4.9.11_1.0.0_ga-wip"
+KERNEL_SRC ?= "git://github.com/nutsboard/linux-imx.git;protocol=git"
 SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
-SRCREV = "c27010d99a3d91703ea2d1a3f9630a9dedc3f86f"
+SRCREV = "bcd63064bd8d495d43e32fbfcf7f9947816c4fb2"
 
 DEFAULT_PREFERENCE = "1"
 
@@ -29,11 +27,10 @@ do_copy_defconfig () {
     if [ ${DO_CONFIG_V7_COPY} = "yes" ]; then
         # copy latest imx_v7_defconfig to use for mx6, mx6ul and mx7
         mkdir -p ${B}
-        cp ${S}/arch/arm/configs/imx_v7_defconfig ${B}/.config
-        cp ${S}/arch/arm/configs/imx_v7_defconfig ${B}/../defconfig
+        cp ${S}/arch/arm/configs/nutsboard_imx_defconfig ${B}/.config
+        cp ${S}/arch/arm/configs/nutsboard_imx_defconfig ${B}/../defconfig
     fi
 }
 
-COMPATIBLE_MACHINE = "(mx6|mx7)"
+COMPATIBLE_MACHINE = "(mx6)"
 EXTRA_OEMAKE_append_mx6 = " ARCH=arm"
-EXTRA_OEMAKE_append_mx7 = " ARCH=arm"

@@ -1,0 +1,13 @@
+# Copyright (C) 2017 NutsBoard.Org
+
+HDMI 720P:
+displayinfo=video=mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 fbmem=28M
+
+HDMI 1080P:
+displayinfo=video=mxcfb0:dev=hdmi,1920x1080M@60,if=RGB24 fbmem=28M
+
+LVDS 1024x600 - 7 inch display:
+displayinfo=video=mxcfb0:dev=ldb,1024x600@60,if=RGB24,bpp=32
+
+VGA 800x480
+displayinfo=video=mxcfb0:dev=lcd,800x480@60,if=RGB24,bpp=32
